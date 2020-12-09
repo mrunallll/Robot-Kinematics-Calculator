@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Robot Kinematics Calculator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/static/css/normalize.min.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Robotics things">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://use.fontawesome.com/5e3e0ed5f4.js"></script>
+</head>
+
+<body>
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+{% for category, message in messages %}
+<script>
+    alert("{{ message }}")
+</script>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="container">
+  <div class="mainTitle">
+    <strong>Robot Kinematics Calculator 🔧</strong>
+  </div>
+
+  <div class="description">
+    Calculate translations and rotations of different robot configurations in one click!
+  </div>
+
+  <form method="POST" action="/calculate" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="kinematicsType">Select type of Kinematics</label>
+      <select class="form-control" id="kinematicsType" name="kinematicsType">
+        <option value="1">Forward Kinematics</option>
+        <option value="2">Inverse Kinematics</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="robotType">Select type of Robot</label>
+      <select class="form-control" id="robotType" name="robotType">
+        <option value="1">Cartesian Robot</option>
+        <option value="2">Cylindrical Robot</option>
+        <option value="3">Spherical Robot</option>
+      </select>
+    </div>
+
+    <!--    For T1 D1 Start-->
+
+    <div class="form-group t1d1Lx">
+      <label for="t1d1Lx">Enter the translation along X-axis: </label>
+      <input type="number" class="form-control" id="t1d1Lx" placeholder="enter a number" name="t1d1Lx">
+    </div>
+
+    <div class="form-group t1d1Ly">
+      <label for="t1d1Ly">Enter the translation along Y-axis: </label>
+      <input type="number" class="form-control" id="t1d1Ly" placeholder="enter a number" name="t1d1Ly">
+    </div>
+
+    <div class="form-group t1d1Lz">
+      <label for="t1d1Lz">Enter the translation along Z-axis: </label>
+      <input type="number" class="form-control" id="t1d1Lz" placeholder="enter a number" name="t1d1Lz">
+    </div>
+
+    <!--    For T1 D1 End-->
+
+    <!--    For T1 D2 Start-->
+
+    <div class="form-group t1d2Lx">
+      <label for="t1d2Lx">Enter the translation along X-axis: </label>
+      <input type="number" class="form-control" id="t1d2Lx" placeholder="enter a number" name="t1d2Lx">
+    </div>
+
+    <div class="form-group t1d2Qz">
+      <label for="t1d2Qz">Enter the angle of rotation about Z-axis: </label>
+      <input type="number" class="form-control" id="t1d2Qz" placeholder="enter an angle in degrees" name="t1d2Qz">
+    </div>
+
+    <div class="form-group t1d2Lz">
+      <label for="t1d2Lz">Enter the translation along Z-axis:</label>
+      <input type="number" class="form-control" id="t1d2Lz" placeholder="enter a number" name="t1d2Lz">
+    </div>
+
+    <!--    For T1 D2 End-->
+    <!--    For T1 D3 Start-->
+    <div class="form-group t1d3Lz">
+      <label for="t1d3Lz">Enter the translation along Z-axis: </label>
+      <input type="number" class="form-control" id="t1d3Lz" placeholder="enter a number" name="t1d3Lz">
+    </div>
+
+    <div class="form-group t1d3Qy">
+      <label for="t1d3Qy">Enter the angle of rotation about Y-axis: </label>
+      <input type="number" class="form-control" id="t1d3Qy" placeholder="enter an angle in degrees" name="t1d3Qy">
+    </div>
+
+    <div class="form-group t1d3Qz">
+      <label for="t1d3Qz">Enter the angle of rotation about Z-axis:</label>
+      <input type="number" class="form-control" id="t1d3Qz" placeholder="enter an angle in degrees" name="t1d3Qz">
+    </div>
+    <!--    For T1 D3 End-->
+
+    <!--    For T2 Start -->
+    <div class="form-group t2point">
+      <label for="t2point">Enter the coordinate point: </label>
+      <input type="text" class="form-control" id="t2point" placeholder="enter the point separated by spaces, eg 2 3 4" name="t2point">
+    </div>
+
+
+    <!--    For T2 End  -->
+    <input type="submit" value="Calculate ⚙" style="margin-bottom: 100px;">
+  </form>
+
+</div>
+
+<script src="/static/js/main.js"></script>
+</body>
+
+</html>
